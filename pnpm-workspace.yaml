@@ -1,0 +1,7 @@
+# pnpm 11 refuses to run dependency install scripts unless they are decided explicitly.
+allowBuilds:
+  # esbuild: used by Vite/Vitest tooling, needs its postinstall for the native binary.
+  esbuild: true
+  # Browser-only app: the Node build of ONNX Runtime (and its large GPU downloads) is not needed.
+  onnxruntime-node: false
+  protobufjs: false

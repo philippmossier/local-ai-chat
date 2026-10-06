@@ -1,0 +1,18 @@
+{
+  "include": ["src", "scripts", "*.ts"],
+  "compilerOptions": {
+    "strict": true,
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["DOM", "DOM.Iterable", "WebWorker", "ES2023"],
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "target": "ES2022",
+    "noUncheckedIndexedAccess": true,
+    "noEmit": true,
+    "types": ["vite/client", "node"],
+    "paths": { "~/*": ["./src/*"] },
+    "baseUrl": "."
+  }
+}
