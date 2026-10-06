@@ -1,0 +1,9 @@
+// Cloudflare deployment (`pnpm deploy:cloudflare`): static files only, no Worker code. The headers in
+// dist/_headers (CSP, cross-origin isolation) are applied by Cloudflare's static asset handling.
+{
+  "$schema": "https://unpkg.com/wrangler/config-schema.json",
+  "name": "local-ai-chat",
+  "compatibility_date": "2025-11-24",
+  "assets": { "directory": "./dist", "not_found_handling": "none" },
+  "routes": [{ "pattern": "local-ai-chat.philippmossier.com", "custom_domain": true }],
+}

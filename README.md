@@ -5,6 +5,9 @@ browser: there is no backend, no account and no tracking. It checks your compute
 fits, and shows a live counter of network requests so the privacy claim can be verified instead of
 trusted.
 
+**Live demo: [local-ai-chat.philippmossier.com](https://local-ai-chat.philippmossier.com)** (needs a browser with WebGPU;
+the first model download is 570 MB to 4.9 GB, straight from Hugging Face).
+
 ![A chat running on Gemma 4 E2B inside the browser, with the speed shown under the answer](docs/chat.png)
 
 Built for people who cannot or do not want to send text to a US cloud service: European organisations
@@ -169,6 +172,12 @@ Cloudflare Pages read that file as is):
 - `Cross-Origin-Opener-Policy: same-origin` and `Cross-Origin-Embedder-Policy: require-corp`, which allow
   multi-threaded WebAssembly,
 - long-lived caching for `/ort/*`.
+
+Most static hosts limit the size of one file (Cloudflare: 25 MiB). The runtime build for browsers without
+JSPI is about 27 MB, so `scripts/copy-ort.mjs` stores it as two parts and the worker joins them; the copy Vite
+would bundle is dropped from the build. The live demo is deployed with
+`pnpm deploy:cloudflare`: static files only, served by Cloudflare with the headers from `dist/_headers`
+(`wrangler.jsonc`).
 
 Model files are fetched by the visitor's browser straight from Hugging Face; your host never serves them.
 

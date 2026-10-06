@@ -40,6 +40,7 @@
   "scripts": {
     "dev": "node scripts/copy-ort.mjs && vite",
     "build": "node scripts/copy-ort.mjs && tsc --noEmit && vite build",
+    "deploy:cloudflare": "pnpm build && npx wrangler deploy",
     "preview": "vite preview",
     "test": "vitest run",
     "check-types": "tsc --noEmit",

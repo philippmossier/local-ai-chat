@@ -61,8 +61,25 @@ function securityPolicy(): Plugin {
   };
 }
 
+/**
+ * ONNX Runtime references its WebAssembly files with `new URL(..., import.meta.url)`, so Vite copies them into
+ * assets/ (one is 27 MB, over Cloudflare's 25 MiB file limit). They are never loaded: the worker always points
+ * the runtime at /ort/ (scripts/copy-ort.mjs). Dropping them keeps the deploy small and makes a wrong path fail.
+ */
+function dropBundledOrtWasm(): Plugin {
+  return {
+    name: "drop-bundled-ort-wasm",
+    apply: "build",
+    generateBundle(_, bundle) {
+      for (const name of Object.keys(bundle)) {
+        if (/ort-wasm-simd-threaded.*\.wasm$/.test(name)) delete bundle[name];
+      }
+    },
+  };
+}
+
 export default defineConfig({
-  plugins: [react(), tailwindcss(), securityPolicy()],
+  plugins: [react(), tailwindcss(), securityPolicy(), dropBundledOrtWasm()],
   resolve: { alias: { "~": path.resolve(import.meta.dirname, "./src") } },
   worker: { format: "es" },
   build: { target: "esnext" },
