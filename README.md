@@ -8,7 +8,7 @@ trusted.
 **Live demo: [local-ai-chat.philippmossier.com](https://local-ai-chat.philippmossier.com)** (needs a browser with WebGPU;
 the first model download is 570 MB to 4.9 GB, straight from Hugging Face).
 
-![A chat running on Gemma 4 E2B inside the browser, with the speed shown under the answer](docs/chat.png)
+![A chat running on Gemma 4 E2B inside the browser (dark theme), with the speed shown under the answer](docs/chat-dark.png)
 
 Built for people who cannot or do not want to send text to a US cloud service: European organisations
 with data protection concerns, or anyone who wants to see what today's open models do locally.
