@@ -123,6 +123,27 @@ and the reply should grow below without the view chasing it. Measured behaviour 
 Measured with the final setup in a real browser: the message sits 88 px from the top (64 margin + 24 padding),
 `scrollTop` stays constant while the content grows from 1074 to 1390 px, and the jump button scrolls to the end.
 
+## Layout and theme
+
+The chat is meant to look calm to non-technical people, with the privacy explainer always in reach.
+
+- **No header bar.** The fold button sits top left and never moves; next to it the logo and name while the history is
+  open, a "new chat" button once it is folded (always on phones). Top right: the theme menu and a labelled "How
+  private is this?" button. The sidebar is `offcanvas`, with its fold button and logo floating over it
+  (`SidebarChrome`).
+- **Model switcher in the message box**, as a button showing the running model. It goes through the picker page,
+  because loading a model needs the progress screen anyway. The placeholder carries the Shift+Enter hint.
+- **History rows are one line.** Times sit under the messages ("Today 8:13 PM", "Yesterday ...", weekday within a
+  week, full date before that) and in the row tooltip. Messages have an optional `at` timestamp; older saved chats
+  show no time. Delete confirms inline in the row.
+- **Grey palette, sidebar darker than the content**, one green accent (white text on it, at least 4.5:1). Light,
+  dark or system, remembered in localStorage. 16 px for messages and the message box, 14 px elsewhere, system UI
+  font. Pointer cursor on everything clickable and thin scrollbars in the surface's colours.
+- **Returning visitors.** If the last model is cached and runs on this hardware, the app goes straight to the chat;
+  the welcome page is for first visits and after "Delete everything". After an update that adds models, one toast
+  says so. The browser remembers the model ids it has seen (`seen-models`); models the hardware cannot run sensibly,
+  or that are already downloaded, are not announced.
+
 ## Language
 
 German or English from `navigator.languages`, one `tr("English", "Deutsch")` at each call site, typed lookups in

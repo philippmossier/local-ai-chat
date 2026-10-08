@@ -75,7 +75,7 @@ Most to least worrying.
 13. **Hardware reasons are shown for the whole class, not per finding**, and some wording ("graphics processor that
     can run small to medium models") is generic when the vendor is hidden.
 14. **No component, worker or engine tests.** They were exercised in a real browser only.
-15. **Start-up shortcuts (ADR 8 addendum).** A returning visitor whose last model is cached skips the welcome
+15. **Start-up shortcuts (ARCHITECTURE, "Layout and theme").** A returning visitor whose last model is cached skips the welcome
     page and sees the chat while the model starts (`ready=false`: typing allowed, sending and model switch
     disabled). Look for races: switching model during start-up, a failed start while the chat is shown (it should
     end on the "failed" page), clearing data in another tab, a saved model id that left the catalog.
@@ -102,7 +102,7 @@ or docs claim more than the code and tests demonstrate. Treat the privacy claim 
 docs/REVIEW-GUIDE.md as a map. For every finding give the file and line, a concrete failing scenario, and how to
 verify it."_
 
-## Open decisions for the owner
+## Open decisions
 
 - Run it on other hardware (Intel Mac, Windows with and without a discrete GPU, Firefox, Safari, a phone) and fill
   in the "Not tested" row of the README.

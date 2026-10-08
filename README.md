@@ -94,7 +94,6 @@ Decisions are written down as ADRs in [`docs/adr/`](docs/adr):
 5. [Chats in localStorage, models in Cache Storage](docs/adr/0005-local-storage-for-chats-cache-storage-for-models.md)
 6. [No i18n library: text next to the code](docs/adr/0006-no-i18n-library-text-next-to-the-code.md)
 7. [shadcn components, including the chat primitives](docs/adr/0007-shadcn-components-including-the-chat-primitives.md)
-8. [Quiet chat layout, grey palette, light and dark](docs/adr/0008-quiet-chat-layout-and-theme.md)
 
 ### Things I ran into (and what the code does about them)
 
